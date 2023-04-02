@@ -57,8 +57,21 @@ class Solution:
             return ""
         return sorted_keyes[k-1]
                 
+    def kthDistinctAlternative(self, arr: List[str], k: int) -> str:
+        freq = {}
+        for idx, elem in enumerate(arr):
+            if elem not in freq.keys():
+                freq[elem] = 1
+            else:
+                freq[elem] = -1
+                
 
-        # print("distinct elem", distinct_elem) 
+        distinct_elem = [elem for elem in arr if freq[elem] == 1]
+
+        if k > len(distinct_elem):
+            return ""
+        else:
+            return distinct_elem[k-1]
 
 if __name__ == '__main__':
     s = Solution()
